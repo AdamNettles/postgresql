@@ -114,7 +114,7 @@ else
 
 end
 
-service "#{svc_name}" do
+service "#{node['postgresql']['server']['service_name']}" do
   service_name svc_name
   supports :restart => true, :status => true, :reload => true
   action [:enable, :start]
