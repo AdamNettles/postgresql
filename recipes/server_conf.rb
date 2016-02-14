@@ -44,7 +44,7 @@ template "#{node['postgresql']['dir']}/postgresql.conf" do
   owner "postgres"
   group "postgres"
   mode 0600
-  notifies change_notify, 'service[postgresql]', :immediately
+  notifies change_notify, 'service[#{svc_name}]', :immediately
 end
 
 template "#{node['postgresql']['dir']}/pg_hba.conf" do
