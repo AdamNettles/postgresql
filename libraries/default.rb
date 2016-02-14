@@ -144,6 +144,8 @@ def pg_TZDIR()
     tzdir = nil
     if ::File.directory?("/usr/lib/zoneinfo")
         tzdir = "/usr/lib/zoneinfo"
+    elsif ::File.directory?("/usr/share/zoneinfo") # for Centos 7
+        tzdir = "/usr/share/zoneinfo"
     else
         share_path = [ ENV['TZDIR'], "/usr/share/zoneinfo" ].compact.first
         if ::File.directory?(share_path)
