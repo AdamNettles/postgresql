@@ -115,7 +115,8 @@ else
 end
 
 service "#{node['postgresql']['server']['service_name']}" do
-  service_name svc_name
+  # service_name svc_name
+  service_name node['postgresql']['server']['service_name']
   supports :restart => true, :status => true, :reload => true
   action [:enable, :start]
 end
