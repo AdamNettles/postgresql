@@ -114,7 +114,7 @@ else
 
 end
 
-service "postgresql" do
+service "postgresql-9.4" do
   service_name svc_name
   supports :restart => true, :status => true, :reload => true
   action [:enable, :start]
