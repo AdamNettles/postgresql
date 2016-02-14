@@ -94,7 +94,8 @@ if node['postgresql']['server']['init_package'] == 'systemd'
       not_if { ::File.exist?("#{node['postgresql']['config']['data_directory']}/PG_VERSION") }
     end
   else
-    execute "#{node['postgresql']['setup_script']} initdb #{svc_name}" do
+    # execute "#{node['postgresql']['setup_script']} initdb #{svc_name}" do
+    execute "#{node['postgresql']['setup_script']} initdb" do
       not_if { ::File.exist?("#{node['postgresql']['config']['data_directory']}/PG_VERSION") }
     end
   end
@@ -113,7 +114,7 @@ else
 
 end
 
-service "postgresql" do
+service "postgresql-9.4" do
   service_name svc_name
   supports :restart => true, :status => true, :reload => true
   action [:enable, :start]
